@@ -99,6 +99,11 @@
         bottom: 1rem;
         opacity: .7;
         font-family: "Montserrat", sans-serif;
+        color: #404040;
+      }
+
+      body.love .watermark{
+        color: #fefefe;
       }
 
       @media (max-width: 500px) {
@@ -127,37 +132,47 @@
     </div>
 
     <script>
-      const wrapper = document.querySelector(".wrapper");
-      const text = document.querySelector(".text");
-      const yesBtn = document.querySelector(".yesBtn");
-      const noBtn = document.querySelector(".noBtn");
-      const wrapperRect = wrapper.getBoundingClientRect();
-      const noBtnRect = noBtn.getBoundingClientRect();
-      const btnGroup = document.querySelector(".btn-group")
-      const retryBtn = document.querySelector(".retryBtn")
-
-      yesBtn.addEventListener("click", () => {
-        text.innerHTML = `Awwwwn... <br/> I love you too babe`;
-        btnGroup.style.display = "none";
-        retryBtn.style.display = "block";
-        document.body.classList.toggle("love");
-      });
-
-      retryBtn.addEventListener("click", ()=>{
-        location.reload();
-      })
-
-
-      noBtn.addEventListener("mouseover", () => {
-        const i =
-          Math.floor(Math.random() * (wrapperRect.width - noBtnRect.width)) + 1;
-        const j =
-          Math.floor(Math.random() * (wrapperRect.height - noBtnRect.height)) +
-          1;
-
-        noBtn.style.left = i + "px";
-        noBtn.style.top = j + "px";
-      });
-    </script>
+        const wrapper = document.querySelector(".wrapper");
+        const text = document.querySelector(".text");
+        const yesBtn = document.querySelector(".yesBtn");
+        const noBtn = document.querySelector(".noBtn");
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const noBtnRect = noBtn.getBoundingClientRect();
+        const btnGroup = document.querySelector(".btn-group");
+        const retryBtn = document.querySelector(".retryBtn");
+        
+        let initialNoBtnLeft = noBtn.style.left;
+        let initialNoBtnTop = noBtn.style.top;
+      
+        yesBtn.addEventListener("click", () => {
+          text.innerHTML = `Awwwwn... <br/> I love you too babe`;
+          btnGroup.style.display = "none";
+          retryBtn.style.display = "block";
+          document.body.classList.toggle("love");
+        });
+      
+        retryBtn.addEventListener("click", () => {
+          text.innerHTML = "Do you love me?";
+          retryBtn.style.display = "none";
+          btnGroup.style.display = "flex";
+          document.body.classList.toggle("love");
+          // Reset the position of noBtn
+          noBtn.style.left = initialNoBtnLeft;
+          noBtn.style.top = initialNoBtnTop;
+        });
+      
+        noBtn.addEventListener("mouseover", () => {
+          const i =
+            Math.floor(Math.random() * (wrapperRect.width - noBtnRect.width)) + 1;
+          const j =
+            Math.floor(Math.random() * (wrapperRect.height - noBtnRect.height)) +
+            1;
+      
+          noBtn.style.left = i + "px";
+          noBtn.style.top = j + "px";
+        });
+      </script>
+      
+      
   </body>
 </html>
