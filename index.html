@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Do you love me?</title>
+    <!-- FONT AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&family=Rubik+Doodle+Shadow&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&family=Rubik+Doodle+Shadow&display=swap");
       * {
         margin: 0;
         padding: 0;
@@ -15,7 +23,7 @@
         color: crimson;
       }
 
-      body.love *{
+      body.love * {
         color: #fefefe;
       }
 
@@ -64,7 +72,6 @@
         font-weight: bold;
         letter-spacing: 1px;
         font-family: "Rubik Doodle Shadow", system-ui;
-
       }
 
       .btn-group button:nth-child(1) {
@@ -83,8 +90,8 @@
         font-size: 5rem;
       }
 
-      .retryBtn{
-        padding: .5rem 1rem;
+      .retryBtn {
+        padding: 0.5rem 1rem;
         border-radius: 50px;
         border: 0;
         color: #fefefe;
@@ -94,15 +101,15 @@
         cursor: pointer;
       }
 
-      .watermark{
+      .watermark {
         position: absolute;
         bottom: 1rem;
-        opacity: .7;
+        opacity: 0.7;
         font-family: "Montserrat", sans-serif;
         color: #404040;
       }
 
-      body.love .watermark{
+      body.love .watermark {
         color: #fefefe;
       }
 
@@ -118,7 +125,11 @@
   </head>
   <body>
     <div class="wrapper">
-        <p class="watermark"><small>&copy; Gift Jackson</small></p>
+      <a href="https://github.com/Gift-Jackson/doyouloveme/">
+          <p class="watermark">
+            <small><i class="fa-brands fa-github-alt"></i> Gift Jackson</small>
+          </p>
+      </a>
       <div>
         <div class="heart">❤</div>
         <h1 class="text">Do you love me?</h1>
@@ -128,51 +139,51 @@
         <button class="yesBtn">Yes baby!</button>
         <button class="noBtn">Noo!!!</button>
       </div>
-      <button class="retryBtn">Click to try again if you don't believe...</button>
+      <button class="retryBtn">
+        Click to try again if you don't believe...
+      </button>
     </div>
 
     <script>
-        const wrapper = document.querySelector(".wrapper");
-        const text = document.querySelector(".text");
-        const yesBtn = document.querySelector(".yesBtn");
-        const noBtn = document.querySelector(".noBtn");
-        const wrapperRect = wrapper.getBoundingClientRect();
-        const noBtnRect = noBtn.getBoundingClientRect();
-        const btnGroup = document.querySelector(".btn-group");
-        const retryBtn = document.querySelector(".retryBtn");
-        
-        let initialNoBtnLeft = noBtn.style.left;
-        let initialNoBtnTop = noBtn.style.top;
-      
-        yesBtn.addEventListener("click", () => {
-          text.innerHTML = `Awwwwn... <br/> I love you too babe`;
-          btnGroup.style.display = "none";
-          retryBtn.style.display = "block";
-          document.body.classList.toggle("love");
-        });
-      
-        retryBtn.addEventListener("click", () => {
-          text.innerHTML = "Do you love me?";
-          retryBtn.style.display = "none";
-          btnGroup.style.display = "flex";
-          document.body.classList.toggle("love");
-          // Reset the position of noBtn
-          noBtn.style.left = initialNoBtnLeft;
-          noBtn.style.top = initialNoBtnTop;
-        });
-      
-        noBtn.addEventListener("mouseover", () => {
-          const i =
-            Math.floor(Math.random() * (wrapperRect.width - noBtnRect.width)) + 1;
-          const j =
-            Math.floor(Math.random() * (wrapperRect.height - noBtnRect.height)) +
-            1;
-      
-          noBtn.style.left = i + "px";
-          noBtn.style.top = j + "px";
-        });
-      </script>
-      
-      
+      const wrapper = document.querySelector(".wrapper");
+      const text = document.querySelector(".text");
+      const yesBtn = document.querySelector(".yesBtn");
+      const noBtn = document.querySelector(".noBtn");
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const noBtnRect = noBtn.getBoundingClientRect();
+      const btnGroup = document.querySelector(".btn-group");
+      const retryBtn = document.querySelector(".retryBtn");
+
+      let initialNoBtnLeft = noBtn.style.left;
+      let initialNoBtnTop = noBtn.style.top;
+
+      yesBtn.addEventListener("click", () => {
+        text.innerHTML = `Awwwwn... <br/> I love you too babe`;
+        btnGroup.style.display = "none";
+        retryBtn.style.display = "block";
+        document.body.classList.toggle("love");
+      });
+
+      retryBtn.addEventListener("click", () => {
+        text.innerHTML = "Do you love me?";
+        retryBtn.style.display = "none";
+        btnGroup.style.display = "flex";
+        document.body.classList.toggle("love");
+        // Reset the position of noBtn
+        noBtn.style.left = initialNoBtnLeft;
+        noBtn.style.top = initialNoBtnTop;
+      });
+
+      noBtn.addEventListener("mouseover", () => {
+        const i =
+          Math.floor(Math.random() * (wrapperRect.width - noBtnRect.width)) + 1;
+        const j =
+          Math.floor(Math.random() * (wrapperRect.height - noBtnRect.height)) +
+          1;
+
+        noBtn.style.left = i + "px";
+        noBtn.style.top = j + "px";
+      });
+    </script>
   </body>
 </html>
